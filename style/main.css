@@ -1,0 +1,22 @@
+/* BASIC CSS */
+
+@import url(../style/basic/base.css);
+@import url(../style/basic/layout.css);
+@import url(../style/basic/helpers.css);
+
+/* SETUP */
+
+@import url(../style/setup/vars.css);
+@import url(../style/setup/typography.css);
+
+/* COMPONENTS */
+@import url(../style/componnents/main-header.css);
+@import url(../style/componnents/map.css);
+@import url(../style/componnents/weather.css);
+@import url(../style/componnents/locations-table.css);
+@import url(../style/componnents/main-footer.css);
+
+/* Mq's */
+
+@import url(../style/mq/mq.css);
+

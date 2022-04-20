@@ -1,0 +1,11 @@
+.weather{
+    grid-area: weather;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-clr-500);
+    background-color: var(--primary-clr-200);
+    border-radius: 6px;
+}

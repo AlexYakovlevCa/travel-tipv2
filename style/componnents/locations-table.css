@@ -1,0 +1,62 @@
+.locations-table {
+  grid-area: locations;
+}
+
+.locations-table article {
+  padding: 0.2em 0.5em;
+  margin-bottom: 0.2em;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  color: var(--primary-clr-100);
+  background-color: var(--primary-clr-400);
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.locations-table article:last-of-type {
+  margin-bottom: 0;
+}
+
+.locations-table p {
+  margin: 0;
+  flex-grow: 1;
+  font-size: 1.2em;
+}
+
+/* BUTTONS */
+.icon-btn {
+  height: 2.5em;
+  aspect-ratio: 1/1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.icon-btn img {
+  height: 60%;
+}
+
+.icon-btn.go {
+  background-color: #3ac34f;
+  box-shadow: inset 0 3px #5fd073, inset 0 -3px #015d33;
+  color: whitesmoke;
+}
+
+.icon-btn.copy {
+  background-color: #30a9c8;
+  box-shadow: inset 0 4px #4bbdd5, inset 0 -4px #048b97;
+}
+
+.icon-btn.copy:active {
+  background-color: #1e9bba;
+}
+
+.icon-btn.trash {
+  background-color: #e33c36;
+  box-shadow: inset 0 3px #ea5a51, inset 0 -3px #8c0606;
+}

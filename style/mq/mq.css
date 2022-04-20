@@ -1,0 +1,64 @@
+@media screen and (min-width: 500px) {
+  .main-layout {
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    grid-template-rows: max-content max-content 2fr 1fr max-content;
+    grid-template-areas:
+      'header header'
+      'search search'
+      'map map'
+      'locations weather'
+      'footer footer';
+    gap: 1.2em;
+  }
+
+  .search .input-search {
+    font-size: large;
+  }
+
+  .map-container {
+    height: 100%;
+  }
+
+  .locations-table {
+    align-self: start;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .main-layout {
+    max-width: 650px;
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    grid-template-rows: max-content 2fr 1fr max-content;
+    grid-template-areas:
+      'header search'
+      'map map'
+      'locations weather'
+      'footer footer';
+    gap: 1.2em;
+  }
+
+  .search .input-search {
+    font-size: 1em;
+  }
+}
+
+@media screen and (min-width: 1050px) {
+  .main-layout {
+    max-width: 1020px;
+
+    grid-template-columns: 3fr 7fr;
+    grid-template-rows: max-content 1fr 1fr max-content;
+    grid-template-areas:
+      'header search'
+      'weather map'
+      'locations map'
+      'footer footer';
+    gap: 1.2em;
+  }
+
+  .search .input-search {
+    font-size: large;
+  }
+}

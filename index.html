@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/main.css" />
+    <title>TravelTip</title>
+  </head>
+  <body onload="app.onInit()">
+
+    <div class="main-container main-layout">
+
+      <h1 class="main-header">TravelTip</h1>
+
+      <form class="search" onsubmit="app.onUserSearch(event,this)" autocapitalize="words" >
+        <input class="input-search" placeholder="Search for a place. for example: Tokyo"></input>
+        <input type="submit" value="Go"></button>
+      </form>
+      
+      <section class="map-container">
+        <div id="map"></div>
+        
+        <img class="btn-user-pos" src="img/icons/my-location.png" alt="location" onclick="app.onGetUserPos()">
+       
+      </section>
+
+      <section class="weather">
+        <h2>Weather</h2>
+      </section>
+      
+      <section class="locations-table">
+        <!-- table is rendered here -->
+      </section>
+
+      <footer class="main-footer">
+        <p>☕ Coffeerights 2022 Alex Yakovlev & Ori Sason, nothing reserved</p>
+      </footer>
+    </div>
+
+
+    <script src="js/libs/axios.js"></script>
+    <script type="module" src="js/app.controller.js"></script>
+  </body>
+</html>
