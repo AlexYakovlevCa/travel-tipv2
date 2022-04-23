@@ -11,7 +11,7 @@ import { mapService } from './services/map.service.js'
 // DONE : SAVE TO LOCAL STORAGE {gLocations }  Alex
 // DONE : onCopyLink() {(lat)/(lng)}
 // DONE : onUserSearchCity() Alex
-// TODO : BONUSES then(Weather)
+// DONE : BONUSES then(Weather)
 // TODO : MarkerByDesign !!!!!
 // TODO : UI shall look nice and responsive
 
@@ -49,7 +49,7 @@ function onInit() {
 }
 
 function onMapClick(ev) {
-  mapService.mapClick(ev).then(renderLocations)
+  mapService.mapClick(ev).then(renderWeather).then(renderLocations)
 }
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
@@ -62,7 +62,7 @@ function getPosition() {
 function onGetUserPos() {
   getPosition()
     .then((pos) => {
-      mapService.panTo(pos.coords.latitude, pos.coords.longitude)
+      mapService.panTo(pos.coords.latitude, pos.coords.longitude).then(renderWeather)
     })
     .catch((err) => {
       alert("couldn't get your location.\nmake sure you allow google maps")
@@ -85,9 +85,20 @@ function renderLocations() {
     document.querySelector('.locations-table').innerHTML = strHtml.join('')
   })
 }
+function renderWeather(weatherStats) {
+  const strHTML = `
+  <ul class = "weather-stats">
+      <div class="weather-img"><img class="w-img" src="${weatherStats.icon}" alt=""></div>
+      <li>${weatherStats.temp}&#8451;</li>
+      <li>${weatherStats.des}</li>
+      <li>Humidty: ${weatherStats.humid}</li>
+  </ul>
+`
+  document.querySelector('.weather').innerHTML = strHTML
+}
 
 function onPanTo(locId) {
-  mapService.panToByLocId(locId)
+  mapService.panToByLocId(locId).then(renderWeather)
 }
 
 function onDeleteLoc(locId) {

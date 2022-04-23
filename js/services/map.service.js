@@ -1,8 +1,7 @@
 import { locService } from './loc.service.js'
 import { utilService } from './utils.service.js'
 import { apiService } from '../api-keys/api.service.js'
-
-
+import { weatherService } from '../services/weather.service.js'
 
 export const mapService = {
   initMap,
@@ -46,6 +45,8 @@ function addMarker(loc, title, isSave, currId = null) {
     position: loc,
     map: gMap,
     title,
+    icon:'img/icons/marker.png',
+    
   })
   if (isSave) gMarkers.push({ id: currId, marker })
   return marker
@@ -66,11 +67,14 @@ function deleteMarkerById(id) {
 function panTo(lat, lng) {
   const laLatLng = new google.maps.LatLng(lat, lng)
   gMap.panTo(laLatLng)
+  return weatherService.getWeather(lat, lng)
 }
 
 function panToByLocId(locId) {
   const { lat, lng } = locService.getLocById(locId)
+  weatherService.getWeather(lat, lng)
   panTo(lat, lng)
+  return weatherService.getWeather(lat, lng)
 }
 
 function _connectGoogleApi() {
@@ -88,8 +92,9 @@ function _connectGoogleApi() {
 
 function placeMarkerAndPanTo(loc) {
   const latLng = { lat: loc.lat, lng: loc.lng }
-  panTo(latLng)
   addMarker(latLng, loc.name, true, loc.id)
+  let weatherStats = panTo(loc.lat, loc.lng)
+  return weatherStats
 }
 
 function mapClick(ev) {
@@ -111,10 +116,9 @@ function mapClick(ev) {
       lng,
     }))
     .then((location) => {
-      placeMarkerAndPanTo(location)
-      return location
+      locService.addLocation(location)
+      return placeMarkerAndPanTo(location)
     })
-    .then(locService.addLocation)
 }
 
 function searchOnMap(address) {

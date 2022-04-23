@@ -9,3 +9,29 @@
     background-color: var(--primary-clr-200);
     border-radius: 6px;
 }
+
+
+.weather-stats{
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    justify-content: space-between;
+}
+.weather-img{
+    width: 50px;
+    height:50px;
+}
+.w-img{
+/* object-fit: cover;
+object-position: center; */
+}
+
+
+/*  <ul class = "weather-stats">
+      <div class="weather-img"><img src="${weatherStats.icon}" alt=""></div>
+      <li>${weatherStats.temp}&#8451;</li>
+      <li>${weatherStats.des}</li>
+      <li>${weatherStats.humid} Humidty</li>
+  </ul> */
